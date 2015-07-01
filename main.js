@@ -1,15 +1,5 @@
 $(document).on('ready', function() {
 
-	setInterval(function(){
-		var now = new Date();
-		$('.text').text(now.toLocaleTimeString());
-		if (now.getHours()>=12) {
-			$('.indicator').css('top', '23px');
-		}
-	}, 1000);
-
-
-
 	var outerShell = $('<div class="outer-shell"></div>');
 	var innerShell = $('<div class="inner-shell"></div>');
 	var labels = $('<div class="labels"><ul><li>AM</li><li class="PM">PM</li><li>Auto</li></ul></div>');
@@ -26,6 +16,14 @@ $(document).on('ready', function() {
 	outerShell.append(innerShell);
 	$('.clock').append(outerShell);
 
+setInterval(function(){
+		var now = new Date();
+		now.setSeconds(now.getSeconds()+1)
+		$('.text').text(now.toLocaleTimeString().slice(0, 8));
+		if (now.getHours()>=12) {
+			$('.indicator').css('top', '23px');
+		}
+	}, 1000);
 
 
 
